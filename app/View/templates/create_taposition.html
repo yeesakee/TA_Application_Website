@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create a New TA Position</h1>
+
+{% if form %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div>
+
+        {{ form.courseNum.label }}<br>
+        {{ form.courseNum(class="formselect") }}<br>
+
+        {% for error in form.courseNum.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{form.semester.label}}<br>
+        {{form.semester(class="formselect")}}<br>
+
+        {% for error in form.semester.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{form.year.label}}<br>
+        {{form.year(class="formselect")}}<br>
+
+        {% for error in form.year.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{ form.ta_needed.label }}<br>
+        {{ form.ta_needed(class="forminput") }}<br>
+
+        {% for error in form.ta_needed.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{ form.minGPA.label }} (x.xx)<br>
+        {{ form.minGPA(class="forminput") }}<br>
+
+        {% for error in form.minGPA.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{form.minGrade.label}}<br>
+        {{form.minGrade(class="forminput")}}<br>
+
+        {% for error in form.minGrade.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{form.TAExperience.label}}
+        {{form.TAExperience(class="formselect")}}<br>
+
+        {% for error in form.TAExperience.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+        <br>
+        {{ form.submit(class="button") }}
+    </div>
+</form>
+{% endif %}
+{% endblock %}

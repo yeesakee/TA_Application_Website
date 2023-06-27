@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Add Previously Taken Course</h1>
+
+{% if form %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div>
+
+        {{ form.courseNum.label }}<br>
+        {{ form.courseNum(class="forminput") }}<br>
+
+        {% for error in form.courseNum.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{ form.grade_earned.label}}<br>
+        {{ form.grade_earned(class="forminput") }}<br>
+
+        {% for error in form.grade_earned.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+
+        {{ form.submit(class="button") }}
+    </div>
+</form>
+{% endif %}
+{% endblock %}

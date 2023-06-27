@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>New Application for {{course.course_prefix}}{{course.course_num}} TA Position</h1>
+
+{% if form %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.grade_earned.label }}<br>
+        {{ form.grade_earned(class="forminput") }}<br>
+
+        {% for error in form.grade_earned.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+        
+        {{ form.semester_taken.label }}<br>
+        {{ form.semester_taken(class="formselect") }}<br>
+        
+        {% for error in form.semester_taken.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+        
+        {{form.year_taken.label}}<br>
+        {{form.year_taken(class="formselect")}}<br>
+        
+        {% for error in form.year_taken.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+        
+        {{ form.semester_applying.label }} <br>
+        {{ form.semester_applying(class="formselect") }}<br>
+        
+        {% for error in form.semester_applying.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+        
+        {{form.year_applying.label}}<br>
+        {{form.year_applying(class="formselect")}}<br>
+        
+        {% for error in form.year_applying.errors %}
+        <span style="color: red;"> [{{ error }}]</span> <br>
+        {% endfor %}
+        
+        {{ form.submit(class="button") }}
+
+    </div>
+</form>
+{% endif %}
+{% endblock %}

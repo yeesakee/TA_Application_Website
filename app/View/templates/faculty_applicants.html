@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>List of applicants</h1>
+{%for student in students%}
+    <div class=" ">
+        {% include 'applicant.html'%}
+    </div>
+{%endfor%}
+
+{% endblock %}

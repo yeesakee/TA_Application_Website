@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>Open TA Positions</h1>
+
+<h2>Recommended Positions</h2>
+{%for d in recommended.items()%}
+    <div class=" ">
+        {% include 'student_taposition.html'%}
+    </div>
+{%endfor%}
+
+<h2>All Positions</h2>
+
+{%for d in data.items()%}
+    <div class=" ">
+        {% include 'student_taposition.html'%}
+    </div>
+{%endfor%}
+
+{% endblock %}

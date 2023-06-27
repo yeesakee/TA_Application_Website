@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Qualifications</h1>
+
+<div>
+    <h3><span style="font-weight:normal;">Student: {{student.first_name}} {{student.last_name}}</span></h3>
+    <table>
+        <tr>
+            <td>
+                <h3><span style="font-weight:normal;">Major: {{student.major}}</span> </h3>
+                <h3><span style="font-weight:normal;">GPA: {{student.gpa}}</span> </h3>
+                <h3><span style="font-weight:normal;">Graduation: {{student.graduation}} &emsp;&emsp;&emsp;</span> </h3>
+            </td>
+            <td>
+                <h3><span style="font-weight:normal;">Email: {{student.email}}</span> </h3>
+                {%if current_user.phone%}
+                <h3><span style="font-weight:normal;">Phone: {{student.phone}}</span> </h3>
+                {%endif%}
+            </td>
+        </tr>
+    </table>
+
+    <h3>Past TA Positions</h3>
+<table>
+{%for p in prev_ta%}
+    <tr>
+        <td>{{p.course_prefix}} {{p.course_num}}: {{p.title}} </td>     
+    </tr>
+{%endfor%}
+</table>
+<h3>Past Courses</h3>
+<table>
+{%for c in courses.items()%}
+    <tr>
+        <td> {{c[1].course_prefix}} {{c[1].course_num}}: {{c[1].title}} </td>       
+        <td>&emsp; Grade Earned: {{c[0].grade_earned}}</td>
+    </tr>
+{%endfor%}
+
+</table>
+</div>
+
+{% endblock %}

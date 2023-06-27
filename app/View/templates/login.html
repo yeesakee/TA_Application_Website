@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Sign In</h1>
+{% if form %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.username.label }} (WSU email) <br>
+        {{ form.username(class="forminput") }}<br>
+
+        {% for error in form.username.errors %}
+        <span style="color: red;"> [{{ error }}]</span>
+        {% endfor %}
+
+        {{form.password.label}}<br>
+        {{form.password(class="forminput")}}<br>
+
+        {% for error in form.password.errors %}
+        <span style="color: red;"> [{{ error }}]</span>
+        {% endfor %}
+
+        {{ form.submit(class="button") }}
+    </div>
+</form>
+{% endif %}
+<p>New Student? <a href="{{url_for('auth.register_student')}}">Click to Register!</a></p>
+<p>New Faculty? <a href="{{url_for('auth.register_faculty')}}">Click to Register!</a></p>
+
+{% endblock %}
+

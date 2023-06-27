@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>TA Positions</h1>
+{%for taposition in tapositions.items()%}
+    <div class=" ">
+        {% include 'faculty_taposition.html'%}
+    </div>
+{%endfor%}
+
+{% endblock %}

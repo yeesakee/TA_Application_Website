@@ -1,0 +1,32 @@
+
+<classtitle>{{student.first_name}} {{student.last_name}}</classtitle> 
+<table>
+    <tr>
+        <td>
+            Email: {{student.email}} <br>
+            {%if current_user.phone%}
+                Phone: {{current_user.phone}}<br>
+            {%endif%}
+            {% if student.assigned %}
+                TA Position: Assigned &emsp;&emsp;&emsp;&emsp;
+            {% else %}
+                TA Position: Not Assigned &emsp;&emsp;&emsp;&emsp;
+            {% endif %} 
+        </td>
+        <td>
+            {% if student.assigned %}
+                <form action="{{url_for('routes.view_qualifications', studentid = student.id)}}" method="post">
+                    <input type="submit" value="View Qualifications" class="submit">
+                </form>
+            {% else %}
+                <form action="{{url_for('routes.view_qualifications', studentid = student.id)}}" method="post">
+                    <input type="submit" value="View Qualifications" class="submit">
+                </form>
+                <form action="{{url_for('routes.approve_application', positionid = position.id, studentid = student.id)}}" method="post">
+                    <input type="submit" value="Approve" class="submit">
+                </form>
+            {% endif %} 
+        </td>
+    </tr>
+</table>
+

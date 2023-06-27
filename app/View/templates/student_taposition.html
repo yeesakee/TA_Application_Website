@@ -1,0 +1,28 @@
+<head>
+    <classtitle>{{d[1].course_prefix}} {{d[1].course_num}}: {{d[1].title}} </classtitle> 
+    <table>
+        <tr><td>Semester: {{d[0].semester}} {{d[0].year}} <br>
+            TA Positions Filled: {{d[0].ta_filled}} / {{d[0].ta_needed}} &emsp;&emsp;<br>
+            GPA Required:
+            {{d[0].minGPA}} <br>
+            Grade Required:
+            {{d[0].minGrade}} <br>
+            </td>
+            <td>Instructor information: <br>
+                {% for prof in profs %}
+                {% if prof.id == d[0].faculty_id %}
+                {{prof.first_name}} {{prof.last_name}} <br>
+                {{prof.email}} <br>
+                {{prof.phone}}
+                {% endif %}
+                {% endfor %}</td>
+        </tr>
+
+    </table>
+  
+
+  
+    <form>
+        <button type="submit" formaction="{{url_for('routes.create_application', positionid = d[0].id)}}" method="post">Apply</button>
+    </form>
+</head>

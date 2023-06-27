@@ -1,0 +1,46 @@
+<html>
+    <head>
+        {% if title %}
+            <title>{{title}}</title>
+        {% else %}
+            <title> Welcome to Termproject! </title>
+        {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        {{moment.include_moment()}}
+    </head>
+
+    <body>
+    <div class ="nav-container">
+        <table>
+            <tr>
+                
+                {% if current_user.is_anonymous %}
+                <td><a href="{{url_for('auth.login')}}" class = "button"> Login </a></td>
+                {%else %}
+                    {% if current_user.user_type == 'Student' %}
+                    <td><a href="{{ url_for('routes.index_student') }}" class = "button">Main Page</a>&emsp;</td>
+                    <td><a href="{{ url_for('routes.aboutme_student' ) }}" class = "button">About Me</a>&emsp;</td>
+                    {%else%}
+                    <td><a href="{{ url_for('routes.index_faculty') }}" class = "button">Main Page</a></td>
+                    <td><a href="{{ url_for('routes.create_taposition') }}" class = "button">Create TA Position</a></td>
+                    {%endif %}
+                    <td><a href="{{url_for('auth.logout')}}" class = "button"> Logout </a></td>
+                {% endif %}
+              
+            </tr>
+        </table>
+    </div>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="flash-container"> {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %} {% endblock %}
+    </div>
+
+    </body>
+</html>

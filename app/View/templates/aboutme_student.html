@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>About Me</h1>
+
+Name: {{current_user.first_name}} {{current_user.last_name}} <br>
+ID: {{current_user.wsu_id}}<br>
+Username: {{current_user.username}}<br>
+{%if current_user.phone%}
+    Phone: {{current_user.phone}}<br>
+{%endif%}
+Major: {{current_user.major}}<br>
+GPA: {{current_user.gpa}}<br>
+Graduation Date: {{current_user.graduation}}<br>
+{%if current_user.assigned%}
+    TA Assignment: Assigned<br>
+{%else %}
+    TA Assignment: Not Assigned<br>
+{% endif %}
+<br>
+
+<h2>My Past TA Positions</h2>
+<table>
+<td><a href="{{ url_for('routes.add_prevta')}}" class="button">Add Previous TA'd Courses</a>&emsp;</td>
+{%for p in prev_ta%}
+    <tr>
+        <td>{{p.course_prefix}} {{p.course_num}} : {{p.title}} </td>     
+        <td>&emsp;&emsp;<form action="{{url_for('routes.remove_prevta', courseid=p.id)}}" method="post">
+            <input type="submit" value="Remove"></td></form>  
+    </tr>
+{%endfor%}
+</table>
+
+<h2>My Past Courses</h2>
+<td><a href="{{ url_for('routes.add_course')}}" class="button">Add Courses</a>&emsp;</td>
+<table>
+{%for c in courses.items()%}
+    <tr>
+        <td>{{c[1].course_prefix}} {{c[1].course_num}} : {{c[1].title}} </td>       
+        <td>&emsp; Grade Earned: {{c[0].grade_earned}}</td>
+        <td>&emsp;&emsp;<form action="{{url_for('routes.remove_course', courseid=c[1].id)}}" method="post">
+            <input type="submit" value="Remove"></td></form>
+    </tr>
+{%endfor%}
+
+</table>
+
+<h2>My Applications</h2>
+<table>
+{% for application in applications.items() %}
+    <tr>
+        <td>{{application[1]}}&emsp;</td>
+        <td>Application Status: </td>
+        {%if application[0].status == 1%}
+            <td>Pending</td>
+            <td>&emsp;<form action="{{url_for('routes.withdraw_application', applicationid=application[0].id)}}" method="post">
+                <input type="submit" value="Withdraw"></td></form>
+        {%else%}
+            <td>Assigned</tr>
+        {%endif%}
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+
+<classtitle> {{taposition[1].course_prefix}} {{taposition[1].course_num}}: {{taposition[1].title}}</classtitle> <br>
+Semester: {{taposition[0].semester}} {{taposition[0].year}}<br>
+Positions Filled: {{taposition[0].ta_filled}} / {{taposition[0].ta_needed}}
+
+<form action="{{url_for('routes.view_applicants', positionid = taposition[0].id)}}" method="post">
+    <input type="submit" value="View Applicants" class="button">
+</form>
