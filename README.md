@@ -2,8 +2,8 @@
 
 ## TA Finder
 --------
-Prepared by:
-* Cai Haught, Ella Blevins, Yeesa Kee
+Created by:
+* Yeesa Kee, Cai Haught, Ella Blevins
 ---
 
 **Course** : CptS 322 - Software Engineering Principles I
