@@ -14,8 +14,7 @@ Prepared by:
 
 ## Table of Contents
 - [Design Document](#design-document)
-  - [## TA Finder](#-ta-finder)
-  - [* Cai Haught, Ella Blevins, Yeesa Kee](#-cai-haught-ella-blevins-yeesa-kee)
+  - [TA Finder](#ta-finder)
   - [Table of Contents](#table-of-contents)
     - [Document Revision History](#document-revision-history)
 - [1. Introduction](#1-introduction)
@@ -32,7 +31,6 @@ Prepared by:
 - [3. Progress Report](#3-progress-report)
 - [4. Testing Plan](#4-testing-plan)
 - [5. References](#5-references)
-  - [N/A](#na)
 
 <a name="revision-history"> </a>
 
@@ -60,7 +58,7 @@ The TA Finder applications helps faculty to find and create TA Positions for the
 This section should describe the high-level architecture of your software:  i.e., the major subsystems and how they fit together. 
 If you adopted the application structure we used in the Smile App, your application would have the Model-View-Controller (MVC) pattern. If you adopted a different architectural pattern, mention the pattern you adopted in your software and briefly discuss the rationale for using the proposed architecture (i.e., why that pattern fits well for your system).
 
-<kbd><img src="documents/../UML_Diagram.png" width="800"></kbd>
+<kbd><img src="documents/UML_Diagram.png" width="800"></kbd>
 
 #### Model:
 Model represents objects in the system (Students, Faculty, Applications, and TA Positions). These models are then stored in our SQLite Database. 
@@ -156,7 +154,7 @@ Model represents the different objects such as Users or Fields that interact wit
   |student_id| Id of the student |
   |course_id|Id of the course|
 
-<kbd><img src="documents/../Class_Diagram.png" width="800"></kbd>
+<kbd><img src="documents/Class_Diagram.png" width="800"></kbd>
 
 ### 2.2.2 Controller
 
@@ -245,5 +243,3 @@ Some difficulties we faced was creating the UML diagram and choosing the right a
  
 
 # 5. References
-N/A
-----
